@@ -1,5 +1,5 @@
 # locally dataset and the dataset in added as zip in Git
 \mnist_test.csv
 \mnist_train.csv
-
+\rf_mode.joblib
 
