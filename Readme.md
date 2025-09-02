@@ -37,6 +37,7 @@ The interactive Streamlit app lets you draw digits on a canvas and instantly see
     - Precision: 0.98
     - Recall: 0.98
     - F1-score: 0.98
+    
 ## Technology 
 - Python 3.11.9
 - Scikit-learn – RandomForestClassifier
