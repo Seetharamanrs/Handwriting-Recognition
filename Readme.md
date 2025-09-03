@@ -4,7 +4,6 @@ This project combines classic machine learning (RandomForest) with a feed-forwar
 
 The interactive Streamlit app lets you draw digits on a canvas and instantly see model predictions with probability scores.
 
-
 # Dataset Details  
 - Size: 70,000 labeled grayscale images (60,000 train + 10,000 test)
 - Image Dimensions: 28×28 pixels, 784 features per sample
