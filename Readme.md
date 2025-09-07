@@ -13,6 +13,7 @@ The interactive Streamlit app lets you draw digits on a canvas and instantly see
     - Train/test split using Scikit-learn
     - Converted into NumPy arrays for model training
 
+
 ## Features
 - 100% Local Processing – All training and inference happens on your machine
 - Streamlit Cloud Deployment – App can be hosted and shared online for easy access
