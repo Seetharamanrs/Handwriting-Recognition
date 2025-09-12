@@ -25,13 +25,16 @@ The interactive Streamlit app lets you draw digits on a canvas and instantly see
 - RandomForest Classifier (Scikit-learn)
     - Accuracy: 96.4% on test set
     - Fast training, interpretable results
-- Neural Network (Keras Sequential, 4 hidden layers)
-    - Accuracy: 97.8% on test set
-    - Better generalization, handles noisy input
+- Convolutional Neural Network (Keras Sequential)   
+    - Accuracy: 98.5% on test set
+    - Handles noisy input better than RandomForest
 - Architecture:
-    - Input: 28×28 flattened
-    - Hidden: Dense layers (256 → 128 → 64 → 32 with ReLU)
-    - Output: 10 (Softmax)
+    - Input: (28,28,1)
+    - Conv2D(32) → MaxPooling2D
+    - Conv2D(64) → MaxPooling2D
+    - Conv2D(128)
+    - Flatten → Dense(128, ReLU) → Dropout(0.5) → Dense(64, ReLU)
+    - Output: Dense(10, Softmax)
 - Classification Metrics Example (NN model):
     - Precision: 0.98
     - Recall: 0.98
@@ -47,7 +50,7 @@ The interactive Streamlit app lets you draw digits on a canvas and instantly see
 
 
 ## Page demo
-![Demo Page](/Handwriting-Recognition/ss/pic.png)
+![Demo Page](ss/pic.png)
 
 
 ## Installation
