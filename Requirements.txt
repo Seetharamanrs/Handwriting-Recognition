@@ -4,7 +4,6 @@ pandas
 matplotlib
 scikit-learn
 tensorflow
-opencv-contrib-python
 streamlit
 streamlit-drawable-canvas
 joblib
