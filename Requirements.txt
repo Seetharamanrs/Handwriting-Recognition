@@ -4,6 +4,8 @@ matplotlib
 scikit-learn
 tensorflow
 opencv-python
+opencv-python-headless
+opencv-contrib-python
 streamlit
 streamlit-drawable-canvas
 joblib
