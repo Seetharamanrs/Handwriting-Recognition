@@ -62,9 +62,7 @@ if st.button("Predict"):
         test_x_normalized = test_x_resized.astype("float32") / 255.0
 
         model_input = np.expand_dims(np.expand_dims(test_x_normalized, axis=-1), axis=0)
-
         val = model.predict(model_input)              
         pred_class = np.argmax(val, axis=1)[0]        
-
         st.write(f"Result: {pred_class}")
         st.bar_chart(val[0])         
