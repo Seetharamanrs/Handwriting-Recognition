@@ -7,12 +7,30 @@ import sklearn
 import streamlit as st
 from tensorflow.keras.models import Sequential, load_model
 from streamlit_drawable_canvas import st_canvas
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 
-model_path =  "Notebook/cnn_model.h5"
+os.makedirs("Notebook", exist_ok=True)
+model_path = r"Notebook/cnn_model.weights.h5"
 if not os.path.exists(model_path):
     st.error(f"Model file not found at {model_path}")
 else:
-    model = load_model(model_path,compile=False)
+    # model = load_model(model_path,compile=False)
+    def build_model():
+        model = Sequential()
+        model.add(Conv2D(32, (3,3), activation='relu', input_shape=(28,28,1)))
+        model.add(MaxPooling2D((2,2)))
+        model.add(Conv2D(64, (3,3), activation='relu'))
+        model.add(MaxPooling2D((2,2)))
+        model.add(Conv2D(128, (3,3), activation='relu'))
+        model.add(Flatten())
+        model.add(Dense(128, activation='relu'))
+        model.add(Dropout(0.5))
+        model.add(Dense(64, activation='relu'))
+        model.add(Dense(10, activation='softmax'))
+        return model
+    model = build_model()  # define your CNN architecture
+    model.load_weights("Notebook/cnn_model.weights.h5")
 
 
 # st.markdown('<style>body{color: White; background-color: DarkSlateGrey}</style>', unsafe_allow_html=True)
