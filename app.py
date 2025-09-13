@@ -51,15 +51,20 @@ if canvas_result.image_data is not None:
 #     val = model.predict(test_x.reshape(1, 28, 28))
 #     st.write(f'result: {np.argmax(val[0])}')
 #     st.bar_chart(val[0])
-if st.button('Predict'):
+if st.button("Predict"):
     if canvas_result.image_data is None:
         st.warning("Draw a digit first!")
-    else:
-        # Convert to grayscale
-        test_x = cv2.cvtColor(canvas_result.image_data.astype('uint8'), cv2.COLOR_BGR2GRAY)
-        test_x_resized=cv2.resize(test_x,(28,28),interpolation=cv2.INTER_NEAREST)
-        test_x_flat = test_x_resized.reshape(1, -1).astype(int)
-        val = model.predict_proba(test_x_flat)
-        pred = model.predict(test_x_flat)
-        st.write(f"Result: {pred[0]}")
-        st.bar_chart(val[0])
+    else: 
+        test_x = cv2.cvtColor(canvas_result.image_data.astype("uint8"), cv2.COLOR_BGR2GRAY)
+
+        test_x_resized = cv2.resize(test_x, (28,28), interpolation=cv2.INTER_NEAREST)
+
+        test_x_normalized = test_x_resized.astype("float32") / 255.0
+
+        model_input = np.expand_dims(np.expand_dims(test_x_normalized, axis=-1), axis=0)
+
+        val = model.predict(model_input)              
+        pred_class = np.argmax(val, axis=1)[0]        
+
+        st.write(f"Result: {pred_class}")
+        st.bar_chart(val[0])         
