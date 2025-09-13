@@ -3,5 +3,4 @@
 \mnist_train.csv
 \rf_model.joblib
 \cnn_model.joblib
-\cnn_model.h5
 \venv

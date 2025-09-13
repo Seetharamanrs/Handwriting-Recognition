@@ -2,15 +2,17 @@ import os
 import numpy as np
 import cv2
 import joblib
+import tensorflow as tf
 import sklearn
 import streamlit as st
+from tensorflow.keras.models import Sequential, load_model
 from streamlit_drawable_canvas import st_canvas
 
-model_path = r"D:\my_git\Handwriting-Recognition\Notebook\rf_model.joblib"
+model_path =  "Notebook/cnn_model.h5"
 if not os.path.exists(model_path):
     st.error(f"Model file not found at {model_path}")
 else:
-    model = joblib.load(model_path)
+    model = load_model(model_path,compile=False)
 
 
 # st.markdown('<style>body{color: White; background-color: DarkSlateGrey}</style>', unsafe_allow_html=True)
@@ -36,11 +38,13 @@ canvas_result = st_canvas(
     key='canvas')
 
 if canvas_result.image_data is not None:
-    img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
-    rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
-    st.write('Model Input')
-    st.image(rescaled)
-
+    img = cv2.cvtColor(canvas_result.image_data.astype('uint8'), cv2.COLOR_BGR2GRAY)
+    img_resized = cv2.resize(img, (28, 28), interpolation=cv2.INTER_NEAREST)
+    img_normalized = img_resized.astype('float32') / 255.0
+    img_reshaped = np.expand_dims(img_normalized, axis=-1)
+    model_input = np.expand_dims(img_reshaped, axis=0)
+    st.write("Model Input")
+    st.image(cv2.resize(img_resized, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST))
 # if st.button('Predict'):
     
 #     test_x = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
