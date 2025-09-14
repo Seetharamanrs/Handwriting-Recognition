@@ -50,7 +50,7 @@ The interactive Streamlit app lets you draw digits on a canvas and instantly see
 
 
 ## Page demo
-![Demo Page](ss/pic.png)
+![Demo Page](ss/pic1.gif)
 
 
 ## Installation
