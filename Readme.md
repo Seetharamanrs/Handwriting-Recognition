@@ -69,7 +69,6 @@ streamlit run app.py
 ```
 Then open http://localhost:8501
 ## Impact & Key Results
-
 - Delivered 97.8% classification accuracy on MNIST using a lightweight NN
 - Reduced inference latency to <1 ms, enabling real-time predictions
 - Built and deployed an interactive ML web app running both locally and in the cloud
